@@ -1,0 +1,11 @@
+run --name habr-pg -e POSTGRES_PASSWORD=pgpwd4habr -d postgres
+
+# psql --username=postgres --dbname=postgres
+
+postgres=# select version();
+
+docker run --name habr-pg-15.1 -p 5432:5432 -e POSTGRES_PASSWORD=pgpwd4habr -d postgres:15.1
+
+postgres=# CREATE DATABASE bird_wiki; \c bird_wiki
+
+bird_wiki=# CREATE TABLE birds (id SERIAL PRIMARY KEY, species VARCHAR(256), description VARCHAR(1024));
